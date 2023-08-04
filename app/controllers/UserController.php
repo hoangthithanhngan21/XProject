@@ -28,36 +28,17 @@ class UserController {
     public function update() {
         $userRepo = new UserRepository();
         if ($userRepo->update() == true) {
-            header("Location: index.php?c=user&a=index");
+           header("Location: index.php?c=user&a=index");
         } else {
             echo '<div class="alert alert-danger">' . $_SESSION['error'] . '</div>';
             header("Location: " . $_SERVER['HTTP_REFERER']);
         }
     }
     public function add(){
-//         //Lấy các giá trị từ FORM
-//         if(isset($_POST['txtUsername'])){
-//             $username  = $_POST['txtUsername'];
-//         }
-//         if(isset($_POST['txtEmail'])){
-//             $email  = $_POST['txtEmail'];
-//         }
-//         if(isset($_POST['txtPassword'])){
-//             $password  = $_POST['txtPassword'];
-//         }
-//         //Tạo và thiết lập đối tượng User
-//         $user = new User();
-//         $user->setUsername($username);
-//         $user->setEmail($email);
-//         $user->setPassword($password);
-//         //Truyền và gọi tới saveRegister() của UserRepository
-//         $userRepo = new UserRepository();
-// //        $userRepo->saveRegister($user);
-//         if($userRepo->saveRegister($user) == true){
-//             header("Location:index.php?c=home&a=index&success=true");
-//         }else{
-//             header("Location:index.php?c=home&a=error&success=false");
-//         }
+        $userRepo = new UserRepository();
+        if($userRepo->saveRegister() == true){
+            header("Location:index.php?c=user&a=index");
      }
+    }
 
 }

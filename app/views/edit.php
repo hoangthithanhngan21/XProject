@@ -5,71 +5,65 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Flexbook</title>
+    <title>XProject</title>
     <!--    CSS Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>    <script src="../../assets/js/main.js"></script>
     <!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../../assets/css/style.css">
-    <style>
-        label {
-        display: inline-block;
-        width: 100px;
-        padding-left: 20px;
-        }
-        input[type="text"],
-        input[type="email"],
-        input[type="password"],
-        textarea {
-        width: 250px;
-        margin-bottom: 10px;
-        }
-</style>
 </head>
 <body>
 <!-- Modal -->
 <div class="modal" id="myModal" tabindex="999" style="background-color:rgba(0, 0, 0, 0.5);">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <!-- head -->
-                        <div class="modal-header">
-                            <div>
-                                <span class="text-muted fs-7">Employee Edit</span>
-                            </div>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="exit()"></button>
-                        </div>
-                        <!-- body -->
-                        <div class="modal-body">
-                        </script>
-                        <?php
-                          foreach($user as $user){ ?>
-                          <form style="width: 400px; margin-left:0px" method="POST" action="index.php?c=user&a=update">
-                          <label for="user_id">User ID:</label>
-                          <input type="text" id="user_id" name="user_id" value="<?= $user->getUserId(); ?>" readonly><br>
-                          <label for="username">Username:</label>
-                          <input type="text" id="username" name="username" value="<?= $user->getUsername(); ?>"><br>
-
-                          <label for="email">Email:</label>
-                          <input type="email" id="email" name="email" value="<?= $user->getEmail(); ?>"><br>
-
-                          <label for="password">Password:</label>
-                          <input type="password" id="password" name="password" value="<?= $user->getPassword(); ?>"><br>
-
-                          <label for="bio">Bio:</label>
-                          <input type="text" id="bio" name="bio" value="<?= $user->getBio(); ?>"><br>
-
-                          <label for="profile_picture">Profile Picture:</label>
-                          <input type="text" id="profile_picture" name="profile_picture" value="<?= $user->getProfilePicture(); ?>"><br>
-
-                          <button type="submit">Update</button>
-                          <button type="button" onclick="goToPage('http://localhost:8080/flexbook_v4/index.php?c=user&a=index')">Cancel</button>
-                          </form>
-                          <?php }?>
-                        </div>
-                    </div>
-                </div>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <!-- head -->
+      <div class="modal-header">
+        <div>
+          <span class="text-muted fs-7">Employee Detail</span>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="exit()"></button>
+      </div>
+      <!-- body -->
+      <div class="modal-body">
+        <?php foreach($user as $user) { ?>
+          <form class="mb-3" style="width: 400px; margin-left:0px" method="POST" action="index.php?c=user&a=update">
+            <div class="mb-3" style="display: flex; ">
+              <label for="id" style="margin-right:50px">User ID:</label>
+              <input type="text" id="user_id" name="user_id" value="<?= $user->getUserId(); ?>" readonly>
             </div>
+            <div class="mb-3" style="display: flex;">
+              <label for="id" style="margin-right:50px">Name:</label>
+              <input type="text" id="name" name="name" value="<?= $user->getName(); ?>">
+            </div>
+            <div class="mb-3" style="display: flex;">
+              <label for="id" style="margin-right:50px">Email:</label>
+              <input type="text" id="email" name="email" value="<?= $user->getEmail(); ?>">
+            </div>
+            <div class="mb-3" style="display: flex;">
+              <label for="id" style="margin-right:50px">Address:</label>
+              <input type="text" id="address" name="address" value="<?= $user->getAddress(); ?>">
+            </div>
+            <div class="mb-3" style="display: flex;">
+              <label for="id" style="margin-right:50px">Salary:</label>
+              <input type="text" id="salary" name="salary" value="<?= $user->getSalary(); ?>">
+            </div>
+            <div class="mb-3" style="display: flex;">
+              <label for="id" style="margin-right:40px">Updated_at:</label>
+              <input type="text" id="updated_at" name="updated_at" value="<?= $user->getUpdatedAt(); ?>">
+            </div>
+            <div>
+            <label for="id" style="margin-right:20px">Profile picture:</label>
+            <input id="profile_picture" name="profile_picture" value="<?= $user->getProfilePicture();?>" >
+            </div>
+            <button type="submit">Update</button>
+          </form>
+        <?php } ?>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script>
   // Hiển thị modal khi trang được tải
@@ -83,15 +77,15 @@
 </script>
 <div class="container">
     <main>
-    <?php
-                        if(isset($_GET['success'])){
-                            echo "<h4 class='text-success text-center'>Bạn đã xóa thành công</h4>";
-                        }
-                    ?>
-        <h3 class="text-center text-success text-bold fs-3 text-uppercase mt-3 mb-3">Danh sách người dùng</h3>
-        <div class="text-center my-4">
-                <button class="btn btn-success btn-lg" type="button" data-bs-toggle="modal" data-bs-target="#createModal">Create New Account</button>
-            </div>
+    <div class="container">
+    <main>
+    <?php if(isset($_GET['success']) and isset($_GET['action'])=='delete')
+        {echo "<h4 class='text-success text-center'>Bạn đã xóa thành công</h4>";}?>
+    <div class="d-flex justify-content-between align-items-center">
+        <h3 class="text-center text-success text-bold fs-3 text-uppercase mt-3 mb-3">LIST OF EMPLOYEES</h3>
+         <button class="btn btn-success btn-lg" type="button" data-bs-toggle="modal" data-bs-target="#createModal">
+    <i class="fas fa-plus"></i> Add New Employee
+  </button></div>
             <!-- create modal -->
             <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
@@ -133,14 +127,14 @@
                     </div>
                 </div>
             </div>
-        <table class="table">
+            <table class="table">
             <thead>
             <tr>
-                <th scope="col">Mã người dùng</th>
-                <th scope="col">Tên truy cập</th>
-                <th scope="col">Địa chỉ Email</th>
-                <th scope="col">Ngày đăng kí</th>
-                <th scope="col" colspan="3" class="text-center">Hành động</th>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">Salry</th>
+                <th scope="col" colspan="3" class="text-center">Action</th>
 
             </tr>
             </thead>
@@ -150,9 +144,9 @@
                 ?>
                 <tr>
                     <th scope="row" name="txtUserID"><?= $user->getUserId();?></th>
-                    <td><?= $user->getUsername();?></td>
-                    <td><?= $user->getEmail();?></td>
-                    <td><?= $user->getCreatedAt();?></td>
+                    <td><?= $user->getName();?></td>
+                    <td><?= $user->getAddress();?></td>
+                    <td><?= $user->getSalary();?></td>
                     <td>
                         <a href="index.php?c=user&a=detail&id=<?= $user->getUserId(); ?>">
                             <i class="bi bi-eye-fill"></i>

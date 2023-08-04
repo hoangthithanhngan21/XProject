@@ -85,32 +85,29 @@ class UserRepository{
             return null;
         }
     }
-//     public function saveRegister($user){
-//         //Kết nối tới CSDL: MySQLi procedural, MySQLi OOP, PDO*
-//         //1. Kết nối DB Server
-//         try {
-//         $db = new DBConnection();
-//         $conn = $db->connect();
-//         //2. Thực hiện truy vấn
-//         //Tạm thời bỏ qua kiểm tra
-//         $sql = "INSERT INTO users (user_id, username, email, password) VALUES (109, ?, ?, ?)";
-//         $stmt = $conn->prepare($sql); //Chuẩn bị thực hiện câu này
-//         $username = $user->getUsername();
-//         $email = $user->getEmail();
-//         $pass = $user->getPassword();
-//         // $stmt->bindParam('sss', $user->getUsername(), $user->getEmail(), $user->getPassword() );
-//         $stmt->bindParam(1, $username, PDO::PARAM_STR);
-//         $stmt->bindParam(2, $email, PDO::PARAM_STR);
-//         $stmt->bindParam(3, $pass, PDO::PARAM_STR);
-//         //3. Xử lý kết quả (SELECT/INSERT-UPDATE-DELETE)
-//         if($stmt->execute())
-//         return true;
-//     } catch(PDOException $e) {
-//                 return false;
-//             }
-//         }
-//     
-//     
+    public function saveRegister()
+{
+    $user_id = $_POST['user_id'];
+    $username = $_POST['name'];
+    $email = $_POST['email'];
+    $profile_picture = $_POST['profile_picture'];
+    $address = $_POST['address'];
+    $salary = $_POST['salary'];
+    $created_at = date('Y-m-d H:i:s');
+    $updated_at = date('Y-m-d H:i:s');
+    try {
+        $db = new DBConnection();
+        $conn = $db->connect();
+        $sql = "INSERT INTO employees (user_id, name, email, profile_picture, address, salary, created_at, updated_at)
+                VALUES ('".$user_id."', '".$username."', '".$email."', '".$profile_picture."', '".$address."', '".$salary."', '".$created_at."', '".$updated_at."')";
+        $stmt = $conn->prepare($sql);
+        if ($stmt->execute()) {
+            return true;
+        }
+    } catch (PDOException $e) {
+        return false;
+    }
+}
     public function Edit(){
         try {
             $db = new DBConnection();
@@ -148,29 +145,16 @@ class UserRepository{
             $db = new DBConnection();
             $conn = $db->connect();
             $user_id = $_POST['user_id'];
-            $username = $_POST['username'];
+            $username = $_POST['name'];
             $email = $_POST['email'];
-            $password = $_POST['password'];
             $profile_picture = $_POST['profile_picture'];
-            $bio = $_POST['bio'];
+            $address = $_POST['address'];
+            $salary = $_POST['salary'];
             $updated_at = date('Y-m-d H:i:s');
-    
-            // Kiểm tra xem email hoặc username đã tồn tại hay chưa
-            $checkSql = "SELECT COUNT(*) FROM users WHERE email = '".$email."' OR username = '".$username."'";
-            $checkStmt = $conn->prepare($checkSql);
-            $checkStmt->execute();
-            $result = $checkStmt->fetch(PDO::FETCH_NUM);
-    
-            if ($result[0] > 1) {
-                return false;
-            } else {
-                // Nếu không có email hoặc username trùng, thực hiện lệnh UPDATE
-                $sql = "UPDATE users SET username = '".$username."', email = '".$email."', password ='".$password."',profile_picture='".$profile_picture."',bio='".$bio."',updated_at='".$updated_at."' WHERE user_id =".$user_id;
+            $sql = "UPDATE employees SET name = '".$username."', email = '".$email."', address = '".$address."', salary = '".$salary."', updated_at = '".$updated_at."', profile_picture = '".$profile_picture."' WHERE user_id = ".$user_id;
                 $stmt = $conn->prepare($sql);
                 $stmt->execute();
                 return true;
-            }
-    
         } catch(PDOException $e) {
             return null;
         }
