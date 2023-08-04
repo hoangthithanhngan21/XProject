@@ -86,9 +86,10 @@
         {echo "<h4 class='text-success text-center'>Bạn đã xóa thành công</h4>";}?>
     <div class="d-flex justify-content-between align-items-center">
         <h3 class="text-center text-success text-bold fs-3 text-uppercase mt-3 mb-3">LIST OF EMPLOYEES</h3>
-         <button class="btn btn-success btn-lg" type="button" data-bs-toggle="modal" data-bs-target="#createModal">
+        <button class="btn btn-success btn-lg" type="button" data-bs-toggle="modal" data-bs-target="#createModal">
     <i class="fas fa-plus"></i> Add New Employee
-  </button></div>
+  </button>
+</div>
             <!-- create modal -->
             <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
@@ -96,35 +97,38 @@
                         <!-- head -->
                         <div class="modal-header">
                             <div>
-                                <h2 class="modal-title" id="exampleModalLabel">Sign Up</h2>
-                                <span class="text-muted fs-7">It's quick and easy.</span>
+                                <h2 class="modal-title" id="exampleModalLabel">Add Employee</h2>
                             </div>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <!-- body -->
                         <div class="modal-body">
                             <form action="index.php?c=user&a=add" method="post">
-                                <!-- names -->
-                                <div class="row">
-                                    <div class="col">
-                                        <input type="text" class="form-control" placeholder="Username" name="txtUsername"/>
-                                    </div>
-<!--                                    <div class="col">-->
-<!--                                        <input type="text" class="form-control" placeholder="Surname" />-->
-<!--                                    </div>-->
-                                </div>
-                                <!-- email & pass -->
-                                <input type="email" class="form-control my-3" placeholder="Email address" name="txtEmail"/>
-                                <input type="password" class="form-control my-3" placeholder="New password" name="txtPassword"/>
-
-                                <!-- disclaimer -->
-                                <div>
-                                    <span class="text-muted fs-7">By clicking Sign Up, you agree to our Terms, Data Policy....</span>
-                                </div>
-                                <!-- btn -->
-                                <div class="text-center mt-3">
-                                    <button type="submit" class="btn btn-success btn-lg" data-bs-dismiss="modal">Sign Up</button>
-                                </div>
+                            <div class="mb-3" style="display: flex; ">
+                            <label for="id" style="margin-right:50px">User ID:</label>
+                            <input type="text" id="user_id" name="user_id" value="">
+                            </div>
+                            <div class="mb-3" style="display: flex;">
+                            <label for="id" style="margin-right:50px">Name:</label>
+                            <input type="text" id="name" name="name" value="">
+                            </div>
+                            <div class="mb-3" style="display: flex;">
+                            <label for="id" style="margin-right:50px">Email:</label>
+                            <input type="text" id="email" name="email" value="">
+                            </div>
+                            <div class="mb-3" style="display: flex;">
+                            <label for="id" style="margin-right:50px">Address:</label>
+                            <input type="text" id="address" name="address" value="">
+                            </div>
+                            <div class="mb-3" style="display: flex;">
+                            <label for="id" style="margin-right:50px">Salary:</label>
+                            <input type="text" id="salary" name="salary" value="">
+                            </div>
+                            <div>
+                            <label for="id" style="margin-right:20px">Profile picture:</label>
+                            <input id="profile_picture" name="profile_picture" value="" >
+                            </div>
+                            <button type="submit" class="btn btn-success btn-lg" data-bs-dismiss="modal">Sign Up</button>
                             </form>
                         </div>
                     </div>
